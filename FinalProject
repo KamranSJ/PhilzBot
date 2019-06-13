@@ -6,7 +6,7 @@ Medium_Flavors_Input = ['medium','nut','nutty','hazelnut','cardamom','chocolate'
 Light_Flavors_Input = ["light","currant","tobacco","milk","milk chocolate","grains"]
 
 # Possible inputs from the menu given to the user
-Dark_Blends = ["jacob's wonderbar", "ether", "julie's ultimate", "aromatic arabic", 
+Dark_Blends = ["jacobs", "ether", "julies", "aromatic arabic", 
                "colombia","tantalizing turkish"]
 Medium_Blends = ["tesora","sumatra","ethiopia","philharmonic","philtered soul","silken splendor",
                  "philz house","greater alarm"]
@@ -51,8 +51,8 @@ def main():
         flavor = prepare_text(flavor)
         # is_in_list function allows us to check if their input matches something in the list
         if is_in_list(flavor, Dark_Flavors_Input): 
-            print("Sounds like you would like a dark roast coffee, would you like our jacob's wonderbar,"
-                  " ether, julies ultimate,\naromatic arabic, colombia, or tantalizing turkish?")
+            print("Sounds like you would like a dark roast coffee, would you like our jacobs,"
+                  " ether, julies,\naromatic arabic, colombia, or tantalizing turkish?")
             break
         if is_in_list(flavor, Medium_Flavors_Input):
             print("Sounds like you would like a medium roast coffee, would you like our"
