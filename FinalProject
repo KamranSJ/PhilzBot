@@ -1,0 +1,158 @@
+import string
+# Possible inputs the user could have when trying to decide on a coffee flavor
+Dark_Flavors_Input = ["smoke","dark chocolate","dark","smokey","toffee"]
+Medium_Flavors_Input = ['medium','nut','nutty','hazelnut','cardamom','chocolate', 'citrus',
+                        'butterscotch','cashew']
+Light_Flavors_Input = ["light","currant","tobacco","milk","milk chocolate","grains"]
+
+# Possible inputs from the menu given to the user
+Dark_Blends = ["jacob's wonderbar", "ether", "julie's ultimate", "aromatic arabic", 
+               "colombia","tantalizing turkish"]
+Medium_Blends = ["tesora","sumatra","ethiopia","philharmonic","philtered soul","silken splendor",
+                 "philz house","greater alarm"]
+Light_Blends = ["ambrosia coffee of god", "canopy of heaven","sooo good", 
+                  "dancing Water","new manhattan"]
+# Possible sugar content for the user to choose from
+Sugar_Content = ["none","no","light","low","medium","full","high","lots"]
+# Possible milk content for all kinds of milk drinkers
+Milk_Content = ["none","no","2%","whole","whole milk","soy","soymilk","almond","almondmilk",
+                "cream","creamer","milk"]
+
+# Three sizes available for drink
+Size_of_Drink  = ["small", "medium", "large"]
+
+def main(): 
+    print('Hello welcome to Philz coffee could I please have your name for your order today?')
+    Name = input("Beloved Customer:\t")
+    print("Hello " + Name +  " I hope you are doing well today! Are you excited "
+          "for some coffee today?")
+    
+# Set up a while loop to start taking their order
+    while True:
+        # This takes input from the user while giving it the Beloved Customer: text
+        # The prepare_text allows us to ignore capitalization on the user side
+        Answer = input("Beloved Customer:\t")
+        Answer = prepare_text(Answer)
+        if Answer == 'yes':
+            print("That is wonderful to hear, hopefully I can help you choose your blend today.\n"
+                  "What is your favorite flavor or blend of coffee to have?")
+            ## Break loop to allows user to get to the next line of text
+            break
+        if Answer == 'no':
+            print("Sorry to hear that, may be we can turn it around!\n"
+                  "What is a flavor or blend you'd prefer?")
+            break
+            ## No break statement here as the user needs to appropriately answer first
+        else:
+            print('I could not understand that, would you like some coffee today?')
+         
+    while True:
+        flavor = input("Beloved Customer:\t")
+        flavor = prepare_text(flavor)
+        # is_in_list function allows us to check if their input matches something in the list
+        if is_in_list(flavor, Dark_Flavors_Input): 
+            print("Sounds like you would like a dark roast coffee, would you like our jacob's wonderbar,"
+                  " ether, julies ultimate,\naromatic arabic, colombia, or tantalizing turkish?")
+            break
+        if is_in_list(flavor, Medium_Flavors_Input):
+            print("Sounds like you would like a medium roast coffee, would you like our"
+                  " tesora, sumatra, ethiopia, philharmonic,\n philtered soul, silken splendor"
+                  " philz house, or greater alarm?")
+            break
+        if is_in_list(flavor, Light_Flavors_Input):
+            print("Sounds like you would like a light roast coffee, would you like our"
+                  " ambrosia coffee of god, canopy of heaven, \nsooo good," 
+                  " dancing water, new manhattan?")
+            break
+        else:
+            print("I don't think I know a flavor like that is there a blend you'd prefer")
+
+    while True:
+        specific_flavor = input("Beloved Customer:\t")
+        specific_flavor = prepare_text(specific_flavor)
+        if is_in_list(specific_flavor, Dark_Blends):
+            print("The",specific_flavor,"sounds amazing!")
+            break
+        if is_in_list(specific_flavor, Medium_Blends):
+            print("The",specific_flavor,"sounds amazing!")
+            break
+        if is_in_list(specific_flavor, Light_Blends):
+            print("The",specific_flavor,"sounds amazing!")
+            break
+            
+        else:
+            print("I don't think that was one of the flavors we offer,"
+                 " please use the menu provided to make a decision.")
+        
+    print("Would you prefer your beverage to be hot or iced today?")
+    while True:
+        temp = input("Beloved Customer:\t")
+        temp = prepare_text(temp)
+        if temp == 'hot':
+            print("Piping hot, coming right up! \n"
+                  "Would you like none, light , medium , or full sugar?")
+            break
+        
+        if temp == 'iced':
+            print("Iced it is! \n"
+                  "Would you like none, light, medium, or full sugar?")
+            break
+        else:
+            print("I'm sorry I didn't quite understand that, would you like it hot or iced?")
+            
+    while True:
+        sweetness = input("Beloved Customer:\t")
+        sweetness = prepare_text(sweetness)
+        if is_in_list(sweetness, Sugar_Content):
+            print("Excellent choice, let's go ahead and get your size,"
+                  " small, medium or large sound good to you?")
+            break
+        else:
+            print("I'm sorry I didn't understand that, what sugar level would you like?")
+            
+    while True:
+        size = input("Beloved Customer:\t")
+        size = prepare_text(size)
+        if is_in_list(size, Size_of_Drink):
+            print("Perfect! A",size,"it is then")
+            break
+        else:
+            print("Sorry, would you like a small, medium, or a large?")
+    
+
+    print("Would you like cream or milk in your drink?")
+    while True:
+        dairy = input("Beloved Customer:\t")
+        dairy = prepare_text(dairy)
+        if is_in_list(dairy, Milk_Content):
+            print("Sounds good boss!")
+            break
+        else:
+            print("Sorry, would you like milk,cream, or some sort of specialty milk"
+                 ", if so be specific?")
+# final print statement takes the previous inputs to complete someone's order!
+    print("Thank you,",Name,", your",size,temp,sweetness,"sweetness",specific_flavor,"with", 
+    dairy,"is coming right up!")
+
+# This function was taken from A3 to check if any element of list_one is in list_two
+def is_in_list(myInput,myList):
+    if myInput in myList:
+        return True
+    return False
+# This function was taken from A3 to take punctuations from user input
+def remove_punctuation(input_string):
+    out_string=""
+    for character in input_string:
+        if character not in string.punctuation:
+            out_string += character
+    return out_string.lower()
+# This function was taken from A3 to take user input and convert to lowercase
+def prepare_text(input_string):
+    temp_string = input_string.lower()
+    temp_string = remove_punctuation(temp_string)
+    return temp_string
+
+
+main()
+
+    
